@@ -1,10 +1,14 @@
 package model;
 
-public class Monument 
+import google.maps.GPS;
+import google.maps.MapElement;
+
+public class Monument implements Model
 {
 	private String name;
 	private String author;
 	private String address;
+	private GPS gps=new GPS();
 
 	public Monument(String name, String author, String address) 
 	{
@@ -41,5 +45,12 @@ public class Monument
 	public void setAuthor(String author)
 	{
 		this.author = author;
+	}
+
+	@Override
+	public MapElement convertToMapElement() {
+		Coordinates coordinates=gps.getCoordinates(address);
+		MyMapElement equivalent=new MyMapElement(name,  address)
+		return ;
 	}
 }
